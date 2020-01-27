@@ -15,3 +15,28 @@ export const announceResult = (playerSelection, compSelection) => {
   }
   return 'Tied';
 }
+
+export const generateMessage = (status) => {
+  switch (status) {
+    case 'Won':
+      return 'Very Nice!';
+    case 'Tied':
+      return 'Try again';
+    case 'Lost':
+      return 'Go home!!';
+  }
+  return 'Waiting for your call';
+};
+
+export const computerSelection = (cheating, playerChoice) => {
+  const lookup = {
+    'Tree': 'Axe',
+    'Axe': 'Moai',
+    'Moai': 'Tree'
+  };
+  if (cheating) {
+    return lookup[playerChoice];
+  }
+  const options = ['Axe', 'Tree', 'Moai'];
+  return options[Math.floor(Math.random() * options.length)];
+};
